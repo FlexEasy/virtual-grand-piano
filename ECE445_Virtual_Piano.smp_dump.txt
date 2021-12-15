@@ -1,0 +1,18 @@
+
+State Machine - |Virtual_Piano_toplevel|karplus_note:KEY2|state
+Name state.001 state.101 state.100 state.011 state.010 state.111 
+state.111 0 0 0 0 0 0 
+state.010 0 0 0 0 1 1 
+state.011 0 0 0 1 0 1 
+state.100 0 0 1 0 0 1 
+state.101 0 1 0 0 0 1 
+state.001 1 0 0 0 0 1 
+
+State Machine - |Virtual_Piano_toplevel|karplus_note:KEY1|state
+Name state.001 state.101 state.100 state.011 state.010 state.111 
+state.111 0 0 0 0 0 0 
+state.010 0 0 0 0 1 1 
+state.011 0 0 0 1 0 1 
+state.100 0 0 1 0 0 1 
+state.101 0 1 0 0 0 1 
+state.001 1 0 0 0 0 1 
