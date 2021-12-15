@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at PIANO TONES..sv(93): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at i2c_controller.v(30): always construct contains both blocking and non-blocking assignments

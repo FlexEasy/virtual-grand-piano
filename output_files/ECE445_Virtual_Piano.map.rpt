@@ -1,0 +1,847 @@
+Analysis & Synthesis report for ECE445_Virtual_Piano
+Sun Apr 15 20:05:30 2018
+Quartus II 64-Bit Version 15.0.2 Build 153 07/15/2015 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Virtual_Piano_toplevel|karplus_note:KEY2|state
+  9. State Machine - |Virtual_Piano_toplevel|karplus_note:KEY1|state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Parameter Settings for User Entity Instance: karplus_note:KEY1|ram_infer:KS
+ 14. Parameter Settings for User Entity Instance: karplus_note:KEY1|ram_infer:KS2
+ 15. Parameter Settings for User Entity Instance: karplus_note:KEY1|ram_infer:KS3
+ 16. Parameter Settings for User Entity Instance: karplus_note:KEY2|ram_infer:KS
+ 17. Parameter Settings for User Entity Instance: karplus_note:KEY2|ram_infer:KS2
+ 18. Parameter Settings for User Entity Instance: karplus_note:KEY2|ram_infer:KS3
+ 19. Parameter Settings for User Entity Instance: i2c_controller:i2c
+ 20. Port Connectivity Checks: "i2c_controller:i2c"
+ 21. Port Connectivity Checks: "karplus_note:KEY2"
+ 22. Port Connectivity Checks: "karplus_note:KEY1|signed_mult:gainfactor2"
+ 23. Port Connectivity Checks: "karplus_note:KEY1"
+ 24. Port Connectivity Checks: "WM8731_CODEC:CODEC"
+ 25. Port Connectivity Checks: "KEY_MIXER:multikey"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
+ 29. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Apr 15 20:05:30 2018       ;
+; Quartus II 64-Bit Version          ; 15.0.2 Build 153 07/15/2015 SJ Full Version ;
+; Revision Name                      ; ECE445_Virtual_Piano                        ;
+; Top-level Entity Name              ; Virtual_Piano_toplevel                      ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 0                                           ;
+;     Total combinational functions  ; 0                                           ;
+;     Dedicated logic registers      ; 0                                           ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 44                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                              ;
++----------------------------------------------------------------------------+------------------------+----------------------+
+; Option                                                                     ; Setting                ; Default Value        ;
++----------------------------------------------------------------------------+------------------------+----------------------+
+; Device                                                                     ; EP4CE6E22A7            ;                      ;
+; Top-level entity name                                                      ; Virtual_Piano_toplevel ; ECE445_Virtual_Piano ;
+; Family name                                                                ; Cyclone IV E           ; Cyclone V            ;
+; Use smart compilation                                                      ; Off                    ; Off                  ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                     ; On                   ;
+; Enable compact report table                                                ; Off                    ; Off                  ;
+; Restructure Multiplexers                                                   ; Auto                   ; Auto                 ;
+; Create Debugging Nodes for IP Cores                                        ; Off                    ; Off                  ;
+; Preserve fewer node names                                                  ; On                     ; On                   ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                    ; Off                  ;
+; Verilog Version                                                            ; Verilog_2001           ; Verilog_2001         ;
+; VHDL Version                                                               ; VHDL_1993              ; VHDL_1993            ;
+; State Machine Processing                                                   ; Auto                   ; Auto                 ;
+; Safe State Machine                                                         ; Off                    ; Off                  ;
+; Extract Verilog State Machines                                             ; On                     ; On                   ;
+; Extract VHDL State Machines                                                ; On                     ; On                   ;
+; Ignore Verilog initial constructs                                          ; Off                    ; Off                  ;
+; Iteration limit for constant Verilog loops                                 ; 5000                   ; 5000                 ;
+; Iteration limit for non-constant Verilog loops                             ; 250                    ; 250                  ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                     ; On                   ;
+; Infer RAMs from Raw Logic                                                  ; On                     ; On                   ;
+; Parallel Synthesis                                                         ; On                     ; On                   ;
+; DSP Block Balancing                                                        ; Auto                   ; Auto                 ;
+; NOT Gate Push-Back                                                         ; On                     ; On                   ;
+; Power-Up Don't Care                                                        ; On                     ; On                   ;
+; Remove Redundant Logic Cells                                               ; Off                    ; Off                  ;
+; Remove Duplicate Registers                                                 ; On                     ; On                   ;
+; Ignore CARRY Buffers                                                       ; Off                    ; Off                  ;
+; Ignore CASCADE Buffers                                                     ; Off                    ; Off                  ;
+; Ignore GLOBAL Buffers                                                      ; Off                    ; Off                  ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                    ; Off                  ;
+; Ignore LCELL Buffers                                                       ; Off                    ; Off                  ;
+; Ignore SOFT Buffers                                                        ; On                     ; On                   ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                    ; Off                  ;
+; Optimization Technique                                                     ; Balanced               ; Balanced             ;
+; Carry Chain Length                                                         ; 70                     ; 70                   ;
+; Auto Carry Chains                                                          ; On                     ; On                   ;
+; Auto Open-Drain Pins                                                       ; On                     ; On                   ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                    ; Off                  ;
+; Auto ROM Replacement                                                       ; On                     ; On                   ;
+; Auto RAM Replacement                                                       ; On                     ; On                   ;
+; Auto DSP Block Replacement                                                 ; On                     ; On                   ;
+; Auto Shift Register Replacement                                            ; Auto                   ; Auto                 ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto                   ; Auto                 ;
+; Auto Clock Enable Replacement                                              ; On                     ; On                   ;
+; Strict RAM Replacement                                                     ; Off                    ; Off                  ;
+; Allow Synchronous Control Signals                                          ; On                     ; On                   ;
+; Force Use of Synchronous Clear Signals                                     ; Off                    ; Off                  ;
+; Auto RAM Block Balancing                                                   ; On                     ; On                   ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                    ; Off                  ;
+; Auto Resource Sharing                                                      ; Off                    ; Off                  ;
+; Allow Any RAM Size For Recognition                                         ; Off                    ; Off                  ;
+; Allow Any ROM Size For Recognition                                         ; Off                    ; Off                  ;
+; Allow Any Shift Register Size For Recognition                              ; Off                    ; Off                  ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                     ; On                   ;
+; Ignore translate_off and synthesis_off directives                          ; Off                    ; Off                  ;
+; Timing-Driven Synthesis                                                    ; On                     ; On                   ;
+; Report Parameter Settings                                                  ; On                     ; On                   ;
+; Report Source Assignments                                                  ; On                     ; On                   ;
+; Report Connectivity Checks                                                 ; On                     ; On                   ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                    ; Off                  ;
+; Synchronization Register Chain Length                                      ; 2                      ; 2                    ;
+; PowerPlay Power Optimization During Synthesis                              ; Normal compilation     ; Normal compilation   ;
+; HDL message level                                                          ; Level2                 ; Level2               ;
+; Suppress Register Optimization Related Messages                            ; Off                    ; Off                  ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000                   ; 5000                 ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000                   ; 5000                 ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                    ; 100                  ;
+; Clock MUX Protection                                                       ; On                     ; On                   ;
+; Auto Gated Clock Conversion                                                ; Off                    ; Off                  ;
+; Block Design Naming                                                        ; Auto                   ; Auto                 ;
+; SDC constraint protection                                                  ; Off                    ; Off                  ;
+; Synthesis Effort                                                           ; Auto                   ; Auto                 ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                     ; On                   ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                    ; Off                  ;
+; Analysis & Synthesis Message Level                                         ; Medium                 ; Medium               ;
+; Disable Register Merging Across Hierarchies                                ; Auto                   ; Auto                 ;
+; Resource Aware Inference For Block RAM                                     ; On                     ; On                   ;
+; Synthesis Seed                                                             ; 1                      ; 1                    ;
++----------------------------------------------------------------------------+------------------------+----------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                   ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path               ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------+---------+
+; PIANO TONES..sv                  ; yes             ; User SystemVerilog HDL File  ; C:/altera/ECE445/PIANO TONES..sv           ;         ;
+; WM8731_CODEC.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/altera/ECE445/WM8731_CODEC.sv           ;         ;
+; KEY_MIXER.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/altera/ECE445/KEY_MIXER.sv              ;         ;
+; Virtual_Piano_toplevel.sv        ; yes             ; User SystemVerilog HDL File  ; C:/altera/ECE445/Virtual_Piano_toplevel.sv ;         ;
+; i2c_controller.v                 ; yes             ; User Verilog HDL File        ; C:/altera/ECE445/i2c_controller.v          ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------+---------+
+
+
++------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                      ;
++---------------------------------------------+--------------------+
+; Resource                                    ; Usage              ;
++---------------------------------------------+--------------------+
+;                                             ;                    ;
+; Total combinational functions               ; 0                  ;
+; Logic element usage by number of LUT inputs ;                    ;
+;     -- 4 input functions                    ; 0                  ;
+;     -- 3 input functions                    ; 0                  ;
+;     -- <=2 input functions                  ; 0                  ;
+;                                             ;                    ;
+; Logic elements by mode                      ;                    ;
+;     -- normal mode                          ; 0                  ;
+;     -- arithmetic mode                      ; 0                  ;
+;                                             ;                    ;
+; Total registers                             ; 0                  ;
+;     -- Dedicated logic registers            ; 0                  ;
+;     -- I/O registers                        ; 0                  ;
+;                                             ;                    ;
+; I/O pins                                    ; 44                 ;
+;                                             ;                    ;
+; Embedded Multiplier 9-bit elements          ; 0                  ;
+;                                             ;                    ;
+; Maximum fan-out node                        ; AUD_ADCLRCK~output ;
+; Maximum fan-out                             ; 1                  ;
+; Total fan-out                               ; 47                 ;
+; Average fan-out                             ; 0.52               ;
++---------------------------------------------+--------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                             ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name     ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------+--------------+
+; |Virtual_Piano_toplevel    ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 44   ; 0            ; |Virtual_Piano_toplevel ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |Virtual_Piano_toplevel|karplus_note:KEY2|state                   ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+; Name      ; state.001 ; state.101 ; state.100 ; state.011 ; state.010 ; state.111 ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+; state.111 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ;
+; state.010 ; 0         ; 0         ; 0         ; 0         ; 1         ; 1         ;
+; state.011 ; 0         ; 0         ; 0         ; 1         ; 0         ; 1         ;
+; state.100 ; 0         ; 0         ; 1         ; 0         ; 0         ; 1         ;
+; state.101 ; 0         ; 1         ; 0         ; 0         ; 0         ; 1         ;
+; state.001 ; 1         ; 0         ; 0         ; 0         ; 0         ; 1         ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |Virtual_Piano_toplevel|karplus_note:KEY1|state                   ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+; Name      ; state.001 ; state.101 ; state.100 ; state.011 ; state.010 ; state.111 ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+; state.111 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ;
+; state.010 ; 0         ; 0         ; 0         ; 0         ; 1         ; 1         ;
+; state.011 ; 0         ; 0         ; 0         ; 1         ; 0         ; 1         ;
+; state.100 ; 0         ; 0         ; 1         ; 0         ; 0         ; 1         ;
+; state.101 ; 0         ; 1         ; 0         ; 0         ; 0         ; 1         ;
+; state.001 ; 1         ; 0         ; 0         ; 0         ; 0         ; 1         ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+
+
++----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                     ;
++-------------------------------------------------+--------------------------------------+
+; Register name                                   ; Reason for Removal                   ;
++-------------------------------------------------+--------------------------------------+
+; karplus_note:KEY2|write_dataS[1]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|combination_last[0]           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|write_dataS[0]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|pluck_countH[0..11]           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|write_dataH[0..17]            ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|write_dataS[2..17]            ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|pluck_countS[0..11]           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|write_data[0..17]             ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|last_pluck                    ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|pluck_count[0..11]            ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|OutSum[2..17]                 ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|OutH[0..17]                   ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|OutS[0..17]                   ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|Out[0..17]                    ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|noteH[0..10]                  ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|noteS[0..10]                  ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|in_dataH[0..17]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|in_dataS[0..17]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|in_data[0..17]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|out_dataH[0..17]              ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ram_infer:KS3|read_add[0..10] ; Lost fanout                          ;
+; karplus_note:KEY2|out_dataS[0..17]              ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ram_infer:KS2|read_add[0..10] ; Lost fanout                          ;
+; karplus_note:KEY2|out_data[0..17]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ram_infer:KS|read_add[0..10]  ; Lost fanout                          ;
+; karplus_note:KEY2|addr_regH[0..10]              ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|addr_regS[0..10]              ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|addr_reg[0..10]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|note[0..10]                   ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|last_clk                      ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|weH                           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|weS                           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|we                            ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ptr_inH[0..11]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ptr_inS[0..11]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ptr_in[0..11]                 ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ptr_outH[0..11]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ptr_outS[0..11]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|ptr_out[0..11]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|pluck                         ; Lost fanout                          ;
+; karplus_note:KEY2|combination_last[1..9]        ; Lost fanout                          ;
+; karplus_note:KEY1|write_dataS[1]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|combination_last[0]           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|write_dataS[0]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|pluck_countH[0..11]           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|write_dataH[0..17]            ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|write_dataS[2..17]            ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|pluck_countS[0..11]           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|write_data[0..17]             ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|last_pluck                    ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|pluck_count[0..11]            ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|OutSum[2..17]                 ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|OutH[0..17]                   ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|OutS[0..17]                   ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|Out[0..17]                    ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|noteH[0..10]                  ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|noteS[0..10]                  ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|in_dataH[0..17]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|in_dataS[0..17]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|in_data[0..17]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|out_dataH[0..17]              ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ram_infer:KS3|read_add[0..10] ; Lost fanout                          ;
+; karplus_note:KEY1|out_dataS[0..17]              ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ram_infer:KS2|read_add[0..10] ; Lost fanout                          ;
+; karplus_note:KEY1|out_data[0..17]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ram_infer:KS|read_add[0..10]  ; Lost fanout                          ;
+; karplus_note:KEY1|addr_regH[0..10]              ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|addr_regS[0..10]              ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|addr_reg[0..10]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|note[0..10]                   ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|last_clk                      ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|weH                           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|weS                           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|we                            ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ptr_inH[0..11]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ptr_inS[0..11]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ptr_in[0..11]                 ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ptr_outH[0..11]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ptr_outS[0..11]               ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|ptr_out[0..11]                ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|pluck                         ; Lost fanout                          ;
+; karplus_note:KEY1|combination_last[1..9]        ; Lost fanout                          ;
+; WM8731_CODEC:CODEC|shift_temp[0..3]             ; Stuck at GND due to stuck port clock ;
+; WM8731_CODEC:CODEC|bclk_divider[0]              ; Stuck at GND due to stuck port clock ;
+; WM8731_CODEC:CODEC|shift_temp[4..15]            ; Stuck at GND due to stuck port clock ;
+; WM8731_CODEC:CODEC|shift_out[0..15]             ; Stuck at GND due to stuck port clock ;
+; WM8731_CODEC:CODEC|bclk_divider[1]              ; Stuck at GND due to stuck port clock ;
+; WM8731_CODEC:CODEC|lrck_divider[0..7]           ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|lopass[0..17]                 ; Lost fanout                          ;
+; karplus_note:KEY2|x_rand[0..30]                 ; Lost fanout                          ;
+; karplus_note:KEY1|lopass[0..17]                 ; Lost fanout                          ;
+; karplus_note:KEY1|x_rand[0..30]                 ; Lost fanout                          ;
+; KEY_MIXER:multikey|press2_tmp[1..9]             ; Lost fanout                          ;
+; KEY_MIXER:multikey|press1_tmp[1..9]             ; Lost fanout                          ;
+; KEY_MIXER:multikey|second_key[0..4]             ; Lost fanout                          ;
+; KEY_MIXER:multikey|first_key[0..4]              ; Lost fanout                          ;
+; KEY_MIXER:multikey|pressed_number[0..4]         ; Lost fanout                          ;
+; KEY_MIXER:multikey|i[0..31]                     ; Lost fanout                          ;
+; karplus_note:KEY2|state.010                     ; Lost fanout                          ;
+; karplus_note:KEY2|state.011                     ; Lost fanout                          ;
+; karplus_note:KEY2|state.100                     ; Lost fanout                          ;
+; karplus_note:KEY2|state.001                     ; Lost fanout                          ;
+; karplus_note:KEY1|state.010                     ; Lost fanout                          ;
+; karplus_note:KEY1|state.011                     ; Lost fanout                          ;
+; karplus_note:KEY1|state.100                     ; Lost fanout                          ;
+; karplus_note:KEY1|state.001                     ; Lost fanout                          ;
+; karplus_note:KEY2|state~8                       ; Lost fanout                          ;
+; karplus_note:KEY2|state~9                       ; Lost fanout                          ;
+; karplus_note:KEY2|state~10                      ; Lost fanout                          ;
+; karplus_note:KEY2|state.111                     ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY2|state.101                     ; Lost fanout                          ;
+; karplus_note:KEY1|state~8                       ; Lost fanout                          ;
+; karplus_note:KEY1|state~9                       ; Lost fanout                          ;
+; karplus_note:KEY1|state~10                      ; Lost fanout                          ;
+; karplus_note:KEY1|state.111                     ; Stuck at GND due to stuck port clock ;
+; karplus_note:KEY1|state.101                     ; Lost fanout                          ;
+; Total Number of Removed Registers = 1133        ;                                      ;
++-------------------------------------------------+--------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                             ;
++---------------------------------------+-------------------------+-----------------------------------------------------------------------+
+; Register name                         ; Reason for Removal      ; Registers Removed due to This Register                                ;
++---------------------------------------+-------------------------+-----------------------------------------------------------------------+
+; karplus_note:KEY2|last_pluck          ; Stuck at GND            ; karplus_note:KEY2|pluck_count[0], karplus_note:KEY2|pluck_count[1],   ;
+;                                       ; due to stuck port clock ; karplus_note:KEY2|pluck_count[2], karplus_note:KEY2|pluck_count[3],   ;
+;                                       ;                         ; karplus_note:KEY2|pluck_count[4], karplus_note:KEY2|pluck_count[5],   ;
+;                                       ;                         ; karplus_note:KEY2|pluck_count[6], karplus_note:KEY2|pluck_count[7],   ;
+;                                       ;                         ; karplus_note:KEY2|pluck_count[8], karplus_note:KEY2|pluck_count[9],   ;
+;                                       ;                         ; karplus_note:KEY2|pluck_count[10], karplus_note:KEY2|pluck_count[11], ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inH[0], karplus_note:KEY2|ptr_inH[1],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inH[2], karplus_note:KEY2|ptr_inH[3],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inH[4], karplus_note:KEY2|ptr_inH[5],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inH[6], karplus_note:KEY2|ptr_inH[7],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inH[8], karplus_note:KEY2|ptr_inH[9],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inH[10], karplus_note:KEY2|ptr_inH[11],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inS[0], karplus_note:KEY2|ptr_inS[1],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inS[2], karplus_note:KEY2|ptr_inS[3],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inS[4], karplus_note:KEY2|ptr_inS[5],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inS[6], karplus_note:KEY2|ptr_inS[7],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inS[8], karplus_note:KEY2|ptr_inS[9],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_inS[10], karplus_note:KEY2|ptr_inS[11],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_in[0], karplus_note:KEY2|ptr_in[1],             ;
+;                                       ;                         ; karplus_note:KEY2|ptr_in[2], karplus_note:KEY2|ptr_in[3],             ;
+;                                       ;                         ; karplus_note:KEY2|ptr_in[4], karplus_note:KEY2|ptr_in[5],             ;
+;                                       ;                         ; karplus_note:KEY2|ptr_in[6], karplus_note:KEY2|ptr_in[7],             ;
+;                                       ;                         ; karplus_note:KEY2|ptr_in[8], karplus_note:KEY2|ptr_in[9],             ;
+;                                       ;                         ; karplus_note:KEY2|ptr_in[10], karplus_note:KEY2|ptr_in[11],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outH[0], karplus_note:KEY2|ptr_outH[1],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outH[2], karplus_note:KEY2|ptr_outH[3],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outH[4], karplus_note:KEY2|ptr_outH[5],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outH[6], karplus_note:KEY2|ptr_outH[7],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outH[8], karplus_note:KEY2|ptr_outH[9],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outH[10], karplus_note:KEY2|ptr_outH[11],       ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outS[0], karplus_note:KEY2|ptr_outS[1],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outS[2], karplus_note:KEY2|ptr_outS[3],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outS[4], karplus_note:KEY2|ptr_outS[5],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outS[6], karplus_note:KEY2|ptr_outS[7],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outS[8], karplus_note:KEY2|ptr_outS[9],         ;
+;                                       ;                         ; karplus_note:KEY2|ptr_outS[10], karplus_note:KEY2|ptr_outS[11],       ;
+;                                       ;                         ; karplus_note:KEY2|ptr_out[0], karplus_note:KEY2|ptr_out[1],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_out[2], karplus_note:KEY2|ptr_out[3],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_out[4], karplus_note:KEY2|ptr_out[5],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_out[6], karplus_note:KEY2|ptr_out[7],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_out[8], karplus_note:KEY2|ptr_out[9],           ;
+;                                       ;                         ; karplus_note:KEY2|ptr_out[10], karplus_note:KEY2|ptr_out[11]          ;
+; karplus_note:KEY1|last_pluck          ; Stuck at GND            ; karplus_note:KEY1|pluck_count[0], karplus_note:KEY1|pluck_count[1],   ;
+;                                       ; due to stuck port clock ; karplus_note:KEY1|pluck_count[2], karplus_note:KEY1|pluck_count[3],   ;
+;                                       ;                         ; karplus_note:KEY1|pluck_count[4], karplus_note:KEY1|pluck_count[5],   ;
+;                                       ;                         ; karplus_note:KEY1|pluck_count[6], karplus_note:KEY1|pluck_count[7],   ;
+;                                       ;                         ; karplus_note:KEY1|pluck_count[8], karplus_note:KEY1|pluck_count[9],   ;
+;                                       ;                         ; karplus_note:KEY1|pluck_count[10], karplus_note:KEY1|pluck_count[11], ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inH[0], karplus_note:KEY1|ptr_inH[1],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inH[2], karplus_note:KEY1|ptr_inH[3],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inH[4], karplus_note:KEY1|ptr_inH[5],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inH[6], karplus_note:KEY1|ptr_inH[7],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inH[8], karplus_note:KEY1|ptr_inH[9],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inH[10], karplus_note:KEY1|ptr_inH[11],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inS[0], karplus_note:KEY1|ptr_inS[1],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inS[2], karplus_note:KEY1|ptr_inS[3],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inS[4], karplus_note:KEY1|ptr_inS[5],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inS[6], karplus_note:KEY1|ptr_inS[7],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inS[8], karplus_note:KEY1|ptr_inS[9],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_inS[10], karplus_note:KEY1|ptr_inS[11],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_in[0], karplus_note:KEY1|ptr_in[1],             ;
+;                                       ;                         ; karplus_note:KEY1|ptr_in[2], karplus_note:KEY1|ptr_in[3],             ;
+;                                       ;                         ; karplus_note:KEY1|ptr_in[4], karplus_note:KEY1|ptr_in[5],             ;
+;                                       ;                         ; karplus_note:KEY1|ptr_in[6], karplus_note:KEY1|ptr_in[7],             ;
+;                                       ;                         ; karplus_note:KEY1|ptr_in[8], karplus_note:KEY1|ptr_in[9],             ;
+;                                       ;                         ; karplus_note:KEY1|ptr_in[10], karplus_note:KEY1|ptr_in[11],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outH[0], karplus_note:KEY1|ptr_outH[1],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outH[2], karplus_note:KEY1|ptr_outH[3],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outH[4], karplus_note:KEY1|ptr_outH[5],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outH[6], karplus_note:KEY1|ptr_outH[7],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outH[8], karplus_note:KEY1|ptr_outH[9],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outH[10], karplus_note:KEY1|ptr_outH[11],       ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outS[0], karplus_note:KEY1|ptr_outS[1],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outS[2], karplus_note:KEY1|ptr_outS[3],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outS[4], karplus_note:KEY1|ptr_outS[5],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outS[6], karplus_note:KEY1|ptr_outS[7],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outS[8], karplus_note:KEY1|ptr_outS[9],         ;
+;                                       ;                         ; karplus_note:KEY1|ptr_outS[10], karplus_note:KEY1|ptr_outS[11],       ;
+;                                       ;                         ; karplus_note:KEY1|ptr_out[0], karplus_note:KEY1|ptr_out[1],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_out[2], karplus_note:KEY1|ptr_out[3],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_out[4], karplus_note:KEY1|ptr_out[5],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_out[6], karplus_note:KEY1|ptr_out[7],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_out[8], karplus_note:KEY1|ptr_out[9],           ;
+;                                       ;                         ; karplus_note:KEY1|ptr_out[10], karplus_note:KEY1|ptr_out[11]          ;
+; karplus_note:KEY2|write_dataS[1]      ; Stuck at GND            ; karplus_note:KEY2|in_dataS[0], karplus_note:KEY2|in_dataS[1],         ;
+;                                       ; due to stuck port clock ; karplus_note:KEY2|in_dataS[2], karplus_note:KEY2|in_dataS[3],         ;
+;                                       ;                         ; karplus_note:KEY2|in_dataS[4], karplus_note:KEY2|in_dataS[5],         ;
+;                                       ;                         ; karplus_note:KEY2|in_dataS[6], karplus_note:KEY2|in_dataS[7],         ;
+;                                       ;                         ; karplus_note:KEY2|out_dataS[0], karplus_note:KEY2|out_dataS[1],       ;
+;                                       ;                         ; karplus_note:KEY2|out_dataS[2], karplus_note:KEY2|out_dataS[3],       ;
+;                                       ;                         ; karplus_note:KEY2|out_dataS[4], karplus_note:KEY2|out_dataS[5],       ;
+;                                       ;                         ; karplus_note:KEY2|out_dataS[6], karplus_note:KEY2|out_dataS[7],       ;
+;                                       ;                         ; karplus_note:KEY2|pluck                                               ;
+; karplus_note:KEY1|write_dataS[1]      ; Stuck at GND            ; karplus_note:KEY1|in_dataS[0], karplus_note:KEY1|in_dataS[1],         ;
+;                                       ; due to stuck port clock ; karplus_note:KEY1|in_dataS[2], karplus_note:KEY1|in_dataS[3],         ;
+;                                       ;                         ; karplus_note:KEY1|in_dataS[4], karplus_note:KEY1|in_dataS[5],         ;
+;                                       ;                         ; karplus_note:KEY1|in_dataS[6], karplus_note:KEY1|in_dataS[7],         ;
+;                                       ;                         ; karplus_note:KEY1|out_dataS[0], karplus_note:KEY1|out_dataS[1],       ;
+;                                       ;                         ; karplus_note:KEY1|out_dataS[2], karplus_note:KEY1|out_dataS[3],       ;
+;                                       ;                         ; karplus_note:KEY1|out_dataS[4], karplus_note:KEY1|out_dataS[5],       ;
+;                                       ;                         ; karplus_note:KEY1|out_dataS[6], karplus_note:KEY1|out_dataS[7],       ;
+;                                       ;                         ; karplus_note:KEY1|pluck                                               ;
+; karplus_note:KEY2|write_dataH[17]     ; Stuck at GND            ; karplus_note:KEY2|in_dataH[0], karplus_note:KEY2|in_dataH[1],         ;
+;                                       ; due to stuck port clock ; karplus_note:KEY2|in_dataH[2], karplus_note:KEY2|in_dataH[3],         ;
+;                                       ;                         ; karplus_note:KEY2|in_dataH[4], karplus_note:KEY2|in_dataH[5],         ;
+;                                       ;                         ; karplus_note:KEY2|in_dataH[6], karplus_note:KEY2|in_dataH[7],         ;
+;                                       ;                         ; karplus_note:KEY2|out_dataH[0], karplus_note:KEY2|out_dataH[1],       ;
+;                                       ;                         ; karplus_note:KEY2|out_dataH[2], karplus_note:KEY2|out_dataH[3],       ;
+;                                       ;                         ; karplus_note:KEY2|out_dataH[4], karplus_note:KEY2|out_dataH[5],       ;
+;                                       ;                         ; karplus_note:KEY2|out_dataH[6], karplus_note:KEY2|out_dataH[7]        ;
+; karplus_note:KEY2|write_data[0]       ; Stuck at GND            ; karplus_note:KEY2|in_data[0], karplus_note:KEY2|in_data[1],           ;
+;                                       ; due to stuck port clock ; karplus_note:KEY2|in_data[2], karplus_note:KEY2|in_data[3],           ;
+;                                       ;                         ; karplus_note:KEY2|in_data[4], karplus_note:KEY2|in_data[5],           ;
+;                                       ;                         ; karplus_note:KEY2|in_data[6], karplus_note:KEY2|in_data[7],           ;
+;                                       ;                         ; karplus_note:KEY2|out_data[0], karplus_note:KEY2|out_data[1],         ;
+;                                       ;                         ; karplus_note:KEY2|out_data[2], karplus_note:KEY2|out_data[3],         ;
+;                                       ;                         ; karplus_note:KEY2|out_data[4], karplus_note:KEY2|out_data[5],         ;
+;                                       ;                         ; karplus_note:KEY2|out_data[6], karplus_note:KEY2|out_data[7]          ;
+; karplus_note:KEY1|write_dataH[17]     ; Stuck at GND            ; karplus_note:KEY1|in_dataH[0], karplus_note:KEY1|in_dataH[1],         ;
+;                                       ; due to stuck port clock ; karplus_note:KEY1|in_dataH[2], karplus_note:KEY1|in_dataH[3],         ;
+;                                       ;                         ; karplus_note:KEY1|in_dataH[4], karplus_note:KEY1|in_dataH[5],         ;
+;                                       ;                         ; karplus_note:KEY1|in_dataH[6], karplus_note:KEY1|in_dataH[7],         ;
+;                                       ;                         ; karplus_note:KEY1|out_dataH[0], karplus_note:KEY1|out_dataH[1],       ;
+;                                       ;                         ; karplus_note:KEY1|out_dataH[2], karplus_note:KEY1|out_dataH[3],       ;
+;                                       ;                         ; karplus_note:KEY1|out_dataH[4], karplus_note:KEY1|out_dataH[5],       ;
+;                                       ;                         ; karplus_note:KEY1|out_dataH[6], karplus_note:KEY1|out_dataH[7]        ;
+; karplus_note:KEY1|write_data[0]       ; Stuck at GND            ; karplus_note:KEY1|in_data[0], karplus_note:KEY1|in_data[1],           ;
+;                                       ; due to stuck port clock ; karplus_note:KEY1|in_data[2], karplus_note:KEY1|in_data[3],           ;
+;                                       ;                         ; karplus_note:KEY1|in_data[4], karplus_note:KEY1|in_data[5],           ;
+;                                       ;                         ; karplus_note:KEY1|in_data[6], karplus_note:KEY1|in_data[7],           ;
+;                                       ;                         ; karplus_note:KEY1|out_data[0], karplus_note:KEY1|out_data[1],         ;
+;                                       ;                         ; karplus_note:KEY1|out_data[2], karplus_note:KEY1|out_data[3],         ;
+;                                       ;                         ; karplus_note:KEY1|out_data[4], karplus_note:KEY1|out_data[5],         ;
+;                                       ;                         ; karplus_note:KEY1|out_data[6], karplus_note:KEY1|out_data[7]          ;
+; karplus_note:KEY2|OutSum[2]           ; Stuck at GND            ; WM8731_CODEC:CODEC|shift_temp[8], WM8731_CODEC:CODEC|shift_temp[9],   ;
+;                                       ; due to stuck port clock ; WM8731_CODEC:CODEC|shift_temp[10], WM8731_CODEC:CODEC|shift_temp[11], ;
+;                                       ;                         ; WM8731_CODEC:CODEC|shift_temp[12], WM8731_CODEC:CODEC|shift_temp[13], ;
+;                                       ;                         ; WM8731_CODEC:CODEC|shift_temp[14], WM8731_CODEC:CODEC|shift_out[9],   ;
+;                                       ;                         ; WM8731_CODEC:CODEC|shift_out[10], WM8731_CODEC:CODEC|shift_out[11],   ;
+;                                       ;                         ; WM8731_CODEC:CODEC|shift_out[12], WM8731_CODEC:CODEC|shift_out[13],   ;
+;                                       ;                         ; WM8731_CODEC:CODEC|shift_out[14]                                      ;
+; karplus_note:KEY2|combination_last[0] ; Stuck at GND            ; KEY_MIXER:multikey|press2_tmp[7], KEY_MIXER:multikey|press2_tmp[6],   ;
+;                                       ; due to stuck port clock ; KEY_MIXER:multikey|press2_tmp[5], KEY_MIXER:multikey|press2_tmp[4],   ;
+;                                       ;                         ; KEY_MIXER:multikey|press2_tmp[3], KEY_MIXER:multikey|press2_tmp[2],   ;
+;                                       ;                         ; KEY_MIXER:multikey|press2_tmp[1], KEY_MIXER:multikey|press2_tmp[8],   ;
+;                                       ;                         ; KEY_MIXER:multikey|press2_tmp[9]                                      ;
+; karplus_note:KEY1|combination_last[0] ; Stuck at GND            ; KEY_MIXER:multikey|press1_tmp[1], KEY_MIXER:multikey|press1_tmp[2],   ;
+;                                       ; due to stuck port clock ; KEY_MIXER:multikey|press1_tmp[3], KEY_MIXER:multikey|press1_tmp[4],   ;
+;                                       ;                         ; KEY_MIXER:multikey|press1_tmp[5], KEY_MIXER:multikey|press1_tmp[6],   ;
+;                                       ;                         ; KEY_MIXER:multikey|press1_tmp[7], KEY_MIXER:multikey|press1_tmp[8],   ;
+;                                       ;                         ; KEY_MIXER:multikey|press1_tmp[9]                                      ;
+; WM8731_CODEC:CODEC|shift_out[0]       ; Stuck at GND            ; WM8731_CODEC:CODEC|shift_out[1], WM8731_CODEC:CODEC|shift_out[2],     ;
+;                                       ; due to stuck port clock ; WM8731_CODEC:CODEC|shift_out[3], WM8731_CODEC:CODEC|shift_out[4],     ;
+;                                       ;                         ; WM8731_CODEC:CODEC|shift_out[5], WM8731_CODEC:CODEC|shift_out[6],     ;
+;                                       ;                         ; WM8731_CODEC:CODEC|shift_out[7], WM8731_CODEC:CODEC|shift_out[8]      ;
+; WM8731_CODEC:CODEC|bclk_divider[0]    ; Stuck at GND            ; WM8731_CODEC:CODEC|shift_out[15]                                      ;
+;                                       ; due to stuck port clock ;                                                                       ;
+; karplus_note:KEY2|state.111           ; Stuck at GND            ; karplus_note:KEY2|state.101                                           ;
+;                                       ; due to stuck port clock ;                                                                       ;
+; karplus_note:KEY1|state.111           ; Stuck at GND            ; karplus_note:KEY1|state.101                                           ;
+;                                       ; due to stuck port clock ;                                                                       ;
++---------------------------------------+-------------------------+-----------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: karplus_note:KEY1|ram_infer:KS ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; note           ; 2047  ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: karplus_note:KEY1|ram_infer:KS2 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; note           ; 2047  ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: karplus_note:KEY1|ram_infer:KS3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; note           ; 2047  ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: karplus_note:KEY2|ram_infer:KS ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; note           ; 2047  ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: karplus_note:KEY2|ram_infer:KS2 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; note           ; 2047  ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: karplus_note:KEY2|ram_infer:KS3 ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; note           ; 2047  ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: i2c_controller:i2c ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; LAST_STAGE     ; 11101 ; Unsigned Binary                        ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "i2c_controller:i2c"                                                                     ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; i2c_sclk ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; i2c_sdat ; Bidir  ; Warning  ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; done     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; ack      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "karplus_note:KEY2" ;
++---------+-------+----------+------------------+
+; Port    ; Type  ; Severity ; Details          ;
++---------+-------+----------+------------------+
+; clock50 ; Input ; Info     ; Stuck at GND     ;
++---------+-------+----------+------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "karplus_note:KEY1|signed_mult:gainfactor2"                                                                               ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                  ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; out  ; Output ; Warning  ; Output or bidir port (18 bits) is wider than the port expression (1 bits) it drives; bit(s) "out[17..1]" have no fanouts ;
++------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "karplus_note:KEY1" ;
++---------+-------+----------+------------------+
+; Port    ; Type  ; Severity ; Details          ;
++---------+-------+----------+------------------+
+; clock50 ; Input ; Info     ; Stuck at GND     ;
++---------+-------+----------+------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "WM8731_CODEC:CODEC"                                                                           ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; sample_end     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; sample_req     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; channel_sel[1] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; channel_sel[0] ; Input  ; Info     ; Stuck at GND                                                                        ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "KEY_MIXER:multikey"                                                                           ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; press          ; Input  ; Info     ; Stuck at GND                                                                        ;
+; press1[16..10] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; press2[16..10] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 44                          ;
+; cycloneiii_io_obuf    ; 3                           ;
+; cycloneiii_lcell_comb ; 2                           ;
+;     normal            ; 2                           ;
+;         0 data inputs ; 2                           ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 15.0.2 Build 153 07/15/2015 SJ Full Version
+    Info: Processing started: Sun Apr 15 20:05:18 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ECE445_Virtual_Piano -c ECE445_Virtual_Piano
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Info (12021): Found 3 design units, including 3 entities, in source file piano tones..sv
+    Info (12023): Found entity 1: karplus_note
+    Info (12023): Found entity 2: ram_infer
+    Info (12023): Found entity 3: signed_mult
+Info (12021): Found 1 design units, including 1 entities, in source file wm8731_codec.sv
+    Info (12023): Found entity 1: WM8731_CODEC
+Info (12021): Found 1 design units, including 1 entities, in source file key_mixer.sv
+    Info (12023): Found entity 1: KEY_MIXER
+Info (12021): Found 1 design units, including 1 entities, in source file random_press.sv
+    Info (12023): Found entity 1: RANDOM_PRESS
+Info (12021): Found 1 design units, including 1 entities, in source file virtual_piano_toplevel.sv
+    Info (12023): Found entity 1: Virtual_Piano_toplevel
+Info (12021): Found 1 design units, including 1 entities, in source file i2c_controller.v
+    Info (12023): Found entity 1: i2c_controller
+Warning (10236): Verilog HDL Implicit Net warning at PIANO TONES..sv(335): created implicit net for "new_outS"
+Warning (10236): Verilog HDL Implicit Net warning at Virtual_Piano_toplevel.sv(46): created implicit net for "press"
+Warning (10236): Verilog HDL Implicit Net warning at Virtual_Piano_toplevel.sv(69): created implicit net for "AUD_reset"
+Info (12127): Elaborating entity "Virtual_Piano_toplevel" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at Virtual_Piano_toplevel.sv(65): truncated value with size 32 to match size of target (16)
+Warning (10030): Net "press" at Virtual_Piano_toplevel.sv(46) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "clk27" at Virtual_Piano_toplevel.sv(38) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "KEY_MIXER" for hierarchy "KEY_MIXER:multikey"
+Warning (10230): Verilog HDL assignment warning at KEY_MIXER.sv(31): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at KEY_MIXER.sv(34): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at KEY_MIXER.sv(36): truncated value with size 32 to match size of target (5)
+Info (12128): Elaborating entity "WM8731_CODEC" for hierarchy "WM8731_CODEC:CODEC"
+Info (12128): Elaborating entity "karplus_note" for hierarchy "karplus_note:KEY1"
+Warning (10230): Verilog HDL assignment warning at PIANO TONES..sv(56): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "ram_infer" for hierarchy "karplus_note:KEY1|ram_infer:KS"
+Info (12128): Elaborating entity "signed_mult" for hierarchy "karplus_note:KEY1|signed_mult:gainfactor"
+Info (12128): Elaborating entity "i2c_controller" for hierarchy "i2c_controller:i2c"
+Warning (12030): Port "ordered port 0" on the entity instantiation of "gainfactor2" is connected to a signal of width 1. The formal width of the signal in the module is 18.  The extra bits will be left dangling without any fan-out logic.
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13032): The following tri-state nodes are fed by constants
+    Warning (13033): The pin "AUD_ADCLRCK" is fed by VCC
+    Warning (13033): The pin "AUD_DACLRCK" is fed by VCC
+    Warning (13033): The pin "AUD_BCLK" is fed by GND
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "AUD_ADCLRCK~synth"
+    Warning (13010): Node "AUD_DACLRCK~synth"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "AUD_DACDAT" is stuck at GND
+    Warning (13410): Pin "AUD_XCK" is stuck at GND
+    Warning (13410): Pin "AUD_MUTE" is stuck at VCC
+Info (17049): 265 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/altera/ECE445/output_files/ECE445_Virtual_Piano.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 38 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "FSR[0]"
+    Warning (15610): No output dependent on input pin "FSR[1]"
+    Warning (15610): No output dependent on input pin "FSR[2]"
+    Warning (15610): No output dependent on input pin "FSR[3]"
+    Warning (15610): No output dependent on input pin "FSR[4]"
+    Warning (15610): No output dependent on input pin "FSR[5]"
+    Warning (15610): No output dependent on input pin "FSR[6]"
+    Warning (15610): No output dependent on input pin "FSR[7]"
+    Warning (15610): No output dependent on input pin "FSR[8]"
+    Warning (15610): No output dependent on input pin "FSR[9]"
+    Warning (15610): No output dependent on input pin "clk"
+    Warning (15610): No output dependent on input pin "reset"
+    Warning (15610): No output dependent on input pin "writedata[0]"
+    Warning (15610): No output dependent on input pin "writedata[1]"
+    Warning (15610): No output dependent on input pin "writedata[2]"
+    Warning (15610): No output dependent on input pin "writedata[3]"
+    Warning (15610): No output dependent on input pin "writedata[4]"
+    Warning (15610): No output dependent on input pin "writedata[5]"
+    Warning (15610): No output dependent on input pin "writedata[6]"
+    Warning (15610): No output dependent on input pin "writedata[7]"
+    Warning (15610): No output dependent on input pin "write"
+    Warning (15610): No output dependent on input pin "chipselect"
+    Warning (15610): No output dependent on input pin "address[0]"
+    Warning (15610): No output dependent on input pin "address[1]"
+    Warning (15610): No output dependent on input pin "address[2]"
+    Warning (15610): No output dependent on input pin "address[3]"
+    Warning (15610): No output dependent on input pin "address[4]"
+    Warning (15610): No output dependent on input pin "address[5]"
+    Warning (15610): No output dependent on input pin "address[6]"
+    Warning (15610): No output dependent on input pin "address[7]"
+    Warning (15610): No output dependent on input pin "address[8]"
+    Warning (15610): No output dependent on input pin "address[9]"
+    Warning (15610): No output dependent on input pin "address[10]"
+    Warning (15610): No output dependent on input pin "SW[0]"
+    Warning (15610): No output dependent on input pin "SW[1]"
+    Warning (15610): No output dependent on input pin "SW[2]"
+    Warning (15610): No output dependent on input pin "SW[3]"
+    Warning (15610): No output dependent on input pin "AUD_ADCDAT"
+Info (21057): Implemented 44 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 38 input pins
+    Info (21059): Implemented 3 output pins
+    Info (21060): Implemented 3 bidirectional pins
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 62 warnings
+    Info: Peak virtual memory: 649 megabytes
+    Info: Processing ended: Sun Apr 15 20:05:30 2018
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:20
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/altera/ECE445/output_files/ECE445_Virtual_Piano.map.smsg.
+
+

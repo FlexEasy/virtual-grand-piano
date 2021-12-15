@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Apr 15 20:05:30 2018
+Quartus II 64-Bit Version : 15.0.2 Build 153 07/15/2015 SJ Full Version
+Revision Name : ECE445_Virtual_Piano
+Top-level Entity Name : Virtual_Piano_toplevel
+Family : Cyclone IV E
+Total logic elements : 0
+    Total combinational functions : 0
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 44
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
